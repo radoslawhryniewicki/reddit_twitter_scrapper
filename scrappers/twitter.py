@@ -2,8 +2,8 @@ import time
 
 from playwright.sync_api import sync_playwright, TimeoutError as PWTimeoutError, Page
 
-from reddit_twitter_scrapper.scrappers.base import BaseScrapper
-from reddit_twitter_scrapper.xpaths import TwitterXPathEnum
+from .base import BaseScrapper
+from ..xpaths import TwitterXPathEnum
 
 PROFILE_TWEETS_AMOUNT_TO_SCRAP = 5
 HASHTAG_TWEETS_AMOUNT_TO_SCRAP = 20

@@ -1,8 +1,8 @@
 from playwright.sync_api import sync_playwright
 import os
 from reddit_twitter_scrapper.models.tweeter import TweetDetails
-from reddit_twitter_scrapper.mongo_db import get_database, save_to_db
-from reddit_twitter_scrapper.scrappers.reddit import RedditScrapper
+from .mongo_db import get_database, save_to_db
+from .scrappers.reddit import RedditScrapper
 from reddit_twitter_scrapper.xpaths import TwitterXPathEnum
 
 
