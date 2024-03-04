@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "reddit-x-scrapper"
+version = "0.1.0"
+description = ""
+authors = ["Radoslaw <tidecode.radoslawh@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+bs4 = "^0.0.2"
+playwright = "^1.41.2"
+pydantic = "^2.6.3"
+pytest = "^8.0.2"
+pymongo = {extras = ["srv"], version = "^4.6.2"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
