@@ -2,6 +2,8 @@ import os
 
 from pymongo import MongoClient
 from pymongo.database import Database
+
+
 def get_database():
     cluster_name = os.environ.get('MONGO_CLUSTER_NAME')
     cluster_password = os.environ.get('MONGO_CLUSTER_PASSWORD')

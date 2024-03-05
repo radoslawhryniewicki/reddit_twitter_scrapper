@@ -1,9 +1,9 @@
 from playwright.sync_api import sync_playwright
 import os
-from reddit_twitter_scrapper.models.tweeter import TweetDetails
-from .mongo_db import get_database, save_to_db
+from .models.tweeter import TweetDetails
+from .db.mongo import get_database, save_to_db
 from .scrappers.reddit import RedditScrapper
-from reddit_twitter_scrapper.xpaths import TwitterXPathEnum
+from .enums.xpaths import TwitterXPathEnum
 
 
 os.environ.get('twitter_mail')
