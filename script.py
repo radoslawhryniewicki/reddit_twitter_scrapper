@@ -6,9 +6,9 @@ from scrappers.reddit import RedditScrapper
 from enums.xpaths import TwitterXPathEnum
 
 
-os.environ.get('twitter_mail')
-os.environ.get('twitter_username')
-os.environ.get('twitter_password')
+# os.environ.get('twitter_mail')
+# os.environ.get('twitter_username')
+# os.environ.get('twitter_password')
 # def scrape_twitter(hashtag: str):
 #     with sync_playwright() as playwright:
 #         browser = playwright.chromium.launch(headless=False)
@@ -49,28 +49,14 @@ os.environ.get('twitter_password')
         # articles = []
 
 
+FIRST_SUBREDDIT = os.environ['FIRST_SUBREDDIT']
+SECOND_SUBREDDIT = os.environ['SECOND_SUBREDDIT']
 
 if __name__ == "__main__":
-    import argparse
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--first-subreddit",
-                        help='Enter first subreddit tag to scrap. Default value set as "discordapp"',
-                        default='discordapp')
-    parser.add_argument("--second-subreddit",
-                        help='Enter second subreddit tag to scrap. Default value set as "Polska"',
-                        default='Polska')
-    parser.add_argument("--twitter-hashtag",
-                        help='Enter X (twitter) hashtag to scrap. Default value set as "#SpaceX"',
-                        default='#SpaceX')
-    parser.add_argument("--twitter-profile",
-                        help='Enter X (twitter) profile to scrap. Default value set as "ElonMusk"',
-                        default='ElonMusk')
-    args = parser.parse_args()
 
     db_name = get_database()
 
-    subreddits = [args.first_subreddit, args.second_subreddit]
-    for subreddit in subreddits:
+    for subreddit in [FIRST_SUBREDDIT, SECOND_SUBREDDIT]:
         reddit_scrapper = RedditScrapper(subreddit=subreddit)
         reddit_posts = reddit_scrapper.scrap()
         save_to_db(reddit_posts, db_name, 'reddit')

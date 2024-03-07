@@ -5,9 +5,9 @@ from pymongo.database import Database
 
 
 def get_database():
-    cluster_name = os.environ.get('MONGO_CLUSTER_NAME')
-    cluster_password = os.environ.get('MONGO_CLUSTER_PASSWORD')
-    cluster_server = os.environ.get('MONGO_CLUSTER_SERVER')
+    cluster_name = os.environ['MONGO_CLUSTER_NAME']
+    cluster_password = os.environ['MONGO_CLUSTER_PASSWORD']
+    cluster_server = os.environ['MONGO_CLUSTER_SERVER']
     CONNECTION_STRING = (f"mongodb+srv://{cluster_name}:{cluster_password}@{cluster_server}/"
                          f"?retryWrites=true&w=majority&appName={cluster_name}")
     client = MongoClient(CONNECTION_STRING)

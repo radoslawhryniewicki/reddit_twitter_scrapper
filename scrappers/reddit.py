@@ -1,8 +1,9 @@
+import logging
 from bs4 import BeautifulSoup, Tag
 from playwright.sync_api import sync_playwright, TimeoutError as PWTimeoutError, Page
 
-from reddit_twitter_scrapper.scrappers.base import BaseScrapper
-from reddit_twitter_scrapper.exceptions import CommunityNotFoundExc
+from .base import BaseScrapper
+from scrappers.exceptions import CommunityNotFoundExc
 
 REDDIT_POSTS_AMOUNT_TO_SCRAP = 5
 
@@ -82,10 +83,11 @@ class RedditScrapper(BaseScrapper):
             context = browser.new_context()
             page = context.new_page()
             page.goto(self._url)
-
+            logging.info(f"Reddit (#{self._subreddit}) scrapping started.")
             self._check_community_exist(page)
             self._reject_cookies(page)
             posts = self._collect_all_subreddit_posts(page)
             posts_details = [self._extract_post_details(post, page) for post in posts]
+            logging.info("Get all posts details. Scrapping ended.")
             browser.close()
             return posts_details
